@@ -1,4 +1,5 @@
-import 'package:assignment/services/invoice_services.dart';
+import 'package:assignment/views/CustomerInformationView.dart';
+import 'package:assignment/views/ReservationDetailsView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,45 +9,10 @@ void main() {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
+          fontFamily: 'Roboto',
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(223, 223, 255, 1)),
         ),
-        home: const RentalHome()),
+        home: const CustomerInformationView(),
+    ),
   );
 }
-
-class RentalHome extends StatefulWidget {
-  const RentalHome({super.key});
-
-  @override
-  State<RentalHome> createState() => _RentalHomeState();
-}
-
-class _RentalHomeState extends State<RentalHome> {
-  final post = InvoiceService();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Invoice"),
-      ),
-      body: FutureBuilder(
-        future: post.fetch(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            default: if (snapshot.hasData) {
-              final fetched = snapshot.data;
-              final cars = post.convert(fetched!.data);
-              print(cars);
-              return Placeholder();
-            }
-            else {
-              return CircularProgressIndicator();
-            }
-          }
-        },
-      ),
-    );
-  }
-}
-

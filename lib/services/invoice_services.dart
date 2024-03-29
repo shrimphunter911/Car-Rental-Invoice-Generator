@@ -39,6 +39,29 @@ class Post{
   String toString() => 'Status = $status, Message = $message';
 }
 
+class Reservation{
+  final String id;
+  final DateTime pickupDateTime;
+  final DateTime dropOffTime;
+  String? discount;
+  int hours;
+  int? days;
+  int? weeks;
+
+  Reservation({
+    this.discount,
+    required this.id,
+    required this.pickupDateTime,
+    required this.dropOffTime,
+    required this.hours,
+    required this.days,
+    required this.weeks,
+  });
+
+  @override
+  String toString() => 'Duration: $weeks Week $days Day $hours Hours';
+}
+
 class Car{
   final String make;
   final String model;
@@ -62,26 +85,16 @@ class Car{
 }
 
 class Customer{
-  final String id;
   final String firstName;
   final String lastName;
   final String email;
   final String phone;
-  final String pickupDate;
-  final String pickupTime;
-  final String dropoffDate;
-  final String dropoffTime;
 
   Customer({
-    required this.id,
     required this.firstName,
     required this.lastName,
     required this.email,
     required this.phone,
-    required this.pickupDate,
-    required this.pickupTime,
-    required this.dropoffDate,
-    required this.dropoffTime,
   });
 
   @override
