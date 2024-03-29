@@ -153,7 +153,7 @@ class _CustomerInformationViewState extends State<CustomerInformationView> {
               height: 55,
               width: 170,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(92, 93, 255, 1),
+                color: const Color.fromRGBO(92, 93, 255, 1),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(
