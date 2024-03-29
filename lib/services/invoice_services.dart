@@ -13,6 +13,10 @@ class InvoiceService{
       throw Exception('Failed to fetch');
     }
   }
+
+  List<Car> convert(List fetched) {
+    return fetched.map((e) => Car.fromList(e)).toList();
+  }
 }
 
 class Post{
@@ -41,16 +45,16 @@ class Car{
   final String type;
   final int seats;
   final int bags;
-  final Map<String, int> rates;
+  final Map<String, dynamic> rates;
   final String imageURL;
 
-  Car.fromList(Map<String, Object?> data)
+  Car.fromList(Map<String, dynamic> data)
       : make = data['make'] as String,
         model = data['model'] as String,
         type = data['type'] as String,
         seats = data['seats'] as int,
         bags = data['bags'] as int,
-        rates = data['rates'] as Map<String, int>,
+        rates = data['rates'] as Map<String, dynamic>,
         imageURL = data['imageURL'] as String;
 
   @override

@@ -35,8 +35,9 @@ class _RentalHomeState extends State<RentalHome> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             default: if (snapshot.hasData) {
-              final data = snapshot.data;
-              print(data);
+              final fetched = snapshot.data;
+              final cars = post.convert(fetched!.data);
+              print(cars);
               return Placeholder();
             }
             else {
