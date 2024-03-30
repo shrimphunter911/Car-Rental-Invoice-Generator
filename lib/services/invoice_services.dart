@@ -3,19 +3,20 @@ import 'package:http/http.dart' as http;
 
 class InvoiceService{
 
-  Future<Post> fetch() async {
+  Future<List<Car>> fetch() async {
     final uri = Uri.parse("https://exam-server-7c41747804bf.herokuapp.com/carsList");
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      return Post.fromJson(jsonDecode(response.body));
+      final fetched = Post.fromJson(jsonDecode(response.body));
+      return fetched.data.map((e) => Car.fromList(e)).toList();
     } else {
       throw Exception('Failed to fetch');
     }
   }
 
-  List<Car> convert(List fetched) {
-    return fetched.map((e) => Car.fromList(e)).toList();
+  List<Car> filter(List<Car> cars, String type) {
+    return cars.where((element) => element.type == type).toList();
   }
 }
 
