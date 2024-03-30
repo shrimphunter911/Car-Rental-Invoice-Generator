@@ -60,7 +60,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                                         child: Text('Vehicle Type*', style: TextStyle(fontSize: 18)),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                                         child: DropdownButtonFormField<String>(
                                           decoration: InputDecoration(
                                             hintText: '',
@@ -133,7 +133,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                             );
                           }
                           else {
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           }
                       }
                     }
@@ -151,7 +151,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: CarModelView(selectedCar: selectedCar,),
                     ),
                   ],
@@ -167,7 +167,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
               height: 55,
               width: 170,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(92, 93, 255, 1),
+                color: const Color.fromRGBO(92, 93, 255, 1),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(

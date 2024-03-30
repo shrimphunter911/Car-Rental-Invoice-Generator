@@ -1,7 +1,4 @@
-import 'package:assignment/views/AdditionalChargesView.dart';
-import 'package:assignment/views/CustomerInformationView.dart';
 import 'package:assignment/views/ReservationDetailsView.dart';
-import 'package:assignment/views/VehicleInformationView.dart';
 import 'package:flutter/material.dart';
 
 void main() {

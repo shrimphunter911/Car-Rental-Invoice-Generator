@@ -1,3 +1,4 @@
+import 'package:assignment/views/SummaryView.dart';
 import 'package:flutter/material.dart';
 
 import '../services/invoice_services.dart';
@@ -46,10 +47,10 @@ class _AdditionalChargesState extends State<AdditionalCharges> {
             child: Column(
               children: [
                 CheckboxListTile(
-                  title: Text('Collision Damage Waiver'),
-                  secondary: Text('\$9.00', style: TextStyle(fontSize: 16)),
-                  activeColor: Color.fromRGBO(93, 92, 255, 1),
-                  checkColor: Color.fromRGBO(93, 92, 255, 1),
+                  title: const Text('Collision Damage Waiver'),
+                  secondary: const Text('\$9.00', style: TextStyle(fontSize: 16)),
+                  activeColor: const Color.fromRGBO(93, 92, 255, 1),
+                  checkColor: const Color.fromRGBO(93, 92, 255, 1),
                   controlAffinity: ListTileControlAffinity.leading,
                   value: damage,
                   onChanged: (bool? value) {
@@ -59,10 +60,10 @@ class _AdditionalChargesState extends State<AdditionalCharges> {
                   },
                 ),
                 CheckboxListTile(
-                  title: Text('Liability Insurance'),
-                  secondary: Text('\$15.00', style: TextStyle(fontSize: 16)),
-                  activeColor: Color.fromRGBO(93, 92, 255, 1),
-                  checkColor: Color.fromRGBO(93, 92, 255, 1),
+                  title: const Text('Liability Insurance'),
+                  secondary: const Text('\$15.00', style: TextStyle(fontSize: 16)),
+                  activeColor: const Color.fromRGBO(93, 92, 255, 1),
+                  checkColor: const Color.fromRGBO(93, 92, 255, 1),
                   controlAffinity: ListTileControlAffinity.leading,
                   value: insurance,
                   onChanged: (bool? value) {
@@ -72,10 +73,10 @@ class _AdditionalChargesState extends State<AdditionalCharges> {
                   },
                 ),
                 CheckboxListTile(
-                  title: Text('Rental tax'),
-                  secondary: Text('11.5%', style: TextStyle(fontSize: 16)),
-                  activeColor: Color.fromRGBO(93, 92, 255, 1),
-                  checkColor: Color.fromRGBO(93, 92, 255, 1),
+                  title: const Text('Rental tax'),
+                  secondary: const Text('11.5%', style: TextStyle(fontSize: 16)),
+                  activeColor: const Color.fromRGBO(93, 92, 255, 1),
+                  checkColor: const Color.fromRGBO(93, 92, 255, 1),
                   controlAffinity: ListTileControlAffinity.leading,
                   value: tax,
                   onChanged: (bool? value) {
@@ -95,7 +96,7 @@ class _AdditionalChargesState extends State<AdditionalCharges> {
               height: 55,
               width: 170,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(92, 93, 255, 1),
+                color: const Color.fromRGBO(92, 93, 255, 1),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(
@@ -106,6 +107,12 @@ class _AdditionalChargesState extends State<AdditionalCharges> {
                       print(information);
                       print(selected);
                       print(additional);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SummaryView(details: details, information: information, selected: selected, additional: additional,)
+                        ),
+                      );
                     } catch (e) {
                       throw Exception('Could not make reservation');
                     }
