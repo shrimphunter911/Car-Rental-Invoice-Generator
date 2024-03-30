@@ -1,9 +1,10 @@
 import 'package:assignment/services/invoice_services.dart';
+import 'package:assignment/views/VehicleInformationView.dart';
 import 'package:flutter/material.dart';
 
 class CustomerInformationView extends StatefulWidget {
-  // final Reservation details;
-  const CustomerInformationView({super.key, });
+  final Reservation details;
+  const CustomerInformationView({super.key, required this.details});
 
   @override
   State<CustomerInformationView> createState() => _CustomerInformationViewState();
@@ -17,6 +18,7 @@ class _CustomerInformationViewState extends State<CustomerInformationView> {
 
   @override
   Widget build(BuildContext context) {
+    final details = widget.details;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -157,7 +159,7 @@ class _CustomerInformationViewState extends State<CustomerInformationView> {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(
-                  onPressed: () async {
+                  onPressed: () {
                     try {
                       final customer = Customer(
                         firstName: firstName.text,
@@ -166,6 +168,13 @@ class _CustomerInformationViewState extends State<CustomerInformationView> {
                         phone: phone.text,
                       );
                       print(customer);
+                      print(details);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VehicleInformationView(details: details, information: customer,)
+                        ),
+                      );
                     } catch (e) {
                       throw Exception('Could not make reservation');
                     }

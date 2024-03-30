@@ -1,9 +1,12 @@
 import 'package:assignment/services/invoice_services.dart';
+import 'package:assignment/views/AdditionalChargesView.dart';
 import 'package:assignment/views/CarModelView.dart';
 import 'package:flutter/material.dart';
 
 class VehicleInformationView extends StatefulWidget {
-  const VehicleInformationView({super.key});
+  final Reservation details;
+  final Customer information;
+  const VehicleInformationView({super.key, required this.details, required this.information});
 
   @override
   State<VehicleInformationView> createState() => _VehicleInformationViewState();
@@ -18,6 +21,9 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
 
   @override
   Widget build(BuildContext context) {
+    final details = widget.details;
+    final information = widget.information;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -167,6 +173,15 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
               child: TextButton(
                   onPressed: () async {
                     try {
+                      print(details);
+                      print(information);
+                      print(selectedCar);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdditionalCharges(details: details, information: information, selected: selectedCar!)
+                        ),
+                      );
                     } catch (e) {
                       throw Exception('Could not make reservation');
                     }

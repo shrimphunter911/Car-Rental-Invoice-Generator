@@ -40,6 +40,33 @@ class Post{
   String toString() => 'Status = $status, Message = $message';
 }
 
+class Charges{
+  int? damage;
+  int? insurance;
+  double? tax;
+
+  Charges(bool damage, bool insurance, bool tax) {
+    if (damage == true) {
+      this.damage = 9;
+    } else {
+      this.damage = 0;
+    }
+    if (insurance == true) {
+      this.insurance = 15;
+    } else {
+      this.insurance = 0;
+    }
+    if (tax == true) {
+      this.tax = 11.5;
+    } else {
+      this.tax = 0;
+    }
+  }
+
+  @override
+  String toString() => 'Charges: Damage = $damage, Insurance = $insurance, Tax = $tax';
+}
+
 class Reservation{
   final String id;
   final DateTime pickupDateTime;

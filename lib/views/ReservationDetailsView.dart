@@ -264,7 +264,7 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                 borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(
-                  onPressed: () async {
+                  onPressed: () {
                     try {
                       final details = Reservation(
                         id: id.text,
@@ -275,10 +275,11 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                         hours: durationHours!,
                         discount: discount.text,
                       );
+                      print(details);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CustomerInformationView()
+                          builder: (context) => CustomerInformationView(details: details)
                         ),
                       );
                     } catch (e) {
