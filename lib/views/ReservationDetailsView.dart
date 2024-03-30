@@ -10,21 +10,26 @@ class ReservationDetailsView extends StatefulWidget {
 }
 
 class _ReservationDetailsViewState extends State<ReservationDetailsView> {
+  // duration properties
   int? durationHours;
   int? durationDays;
   int? durationWeeks;
+  // DateTime for pickup and dropoff date and time
+  // TimeOfDay for pickup and dropoff time picker
   DateTime? pickupDateTime;
   DateTime? pickupDate;
   TimeOfDay? pickupTime;
   DateTime? dropOffDateTime;
   DateTime? dropOffDate;
   TimeOfDay? dropOffTime;
+  // Text Editing Controllers to control TextFields
   TextEditingController pickup = TextEditingController();
   TextEditingController dropOff = TextEditingController();
   TextEditingController id = TextEditingController();
   TextEditingController duration = TextEditingController();
   TextEditingController discount = TextEditingController();
 
+  // Method to calculate duration with difference between pickup and dropoff time
   int durationDifference(DateTime from, DateTime to) {
     Duration duration = to.difference(from);
     int hours = duration.inHours;
@@ -90,16 +95,19 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                   child: TextField(
                     controller: pickup,
                     onTap: () async {
+                      // popping up Date Picker for user to select a date
                       pickupDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                       );
+                      // popping up Time Picker for user to select a Time
                       pickupTime = await showTimePicker(
                         context: context,
                         initialTime: TimeOfDay.now(),
                       );
+                      // Combining pickup date and time into one single DateTime property
                       pickupDateTime = DateTime(
                           pickupDate!.year,
                           pickupDate!.month,
@@ -108,6 +116,7 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                           pickupTime!.minute
                       );
                       setState(() {
+                        // Calculating hours, days and week from duration
                         pickup.text = '$pickupDateTime';
                         durationHours = durationDifference(pickupDateTime!, dropOffDateTime!);
                         durationWeeks = (durationHours!~/168);
@@ -144,16 +153,19 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                   child: TextField(
                     controller: dropOff,
                     onTap: () async {
+                      // popping up Date Picker for user to select a date
                       dropOffDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                       );
+                      // popping up Time Picker for user to select a time
                       dropOffTime = await showTimePicker(
                         context: context,
                         initialTime: TimeOfDay.now(),
                       );
+                      // Combining dropoff date and time into one single DateTime property
                       dropOffDateTime = DateTime(
                           dropOffDate!.year,
                           dropOffDate!.month,
@@ -162,6 +174,7 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                           dropOffTime!.minute
                       );
                       setState(() {
+                        // Calculating hours, days and week from duration
                         dropOff.text = '$dropOffDateTime';
                         durationHours = durationDifference(pickupDateTime!, dropOffDateTime!);
                         durationWeeks = (durationHours!~/168);
@@ -266,6 +279,7 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
               child: TextButton(
                   onPressed: () {
                     try {
+                      // Constructing reservation details
                       final details = Reservation(
                         id: id.text,
                         pickupDateTime: pickupDateTime!,
@@ -275,7 +289,7 @@ class _ReservationDetailsViewState extends State<ReservationDetailsView> {
                         hours: durationHours!,
                         discount: discount.text,
                       );
-                      print(details);
+                      // Navigating to the next page
                       Navigator.push(
                         context,
                         MaterialPageRoute(

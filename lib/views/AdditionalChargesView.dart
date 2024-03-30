@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../services/invoice_services.dart';
 
+// Page to check additional options
+
 class AdditionalCharges extends StatefulWidget {
   final Reservation details;
   final Customer information;

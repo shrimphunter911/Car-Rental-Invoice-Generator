@@ -11,7 +11,7 @@ void main() {
           fontFamily: 'Roboto',
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(223, 223, 255, 1)),
         ),
-        home: const ReservationDetailsView(),
+        home: const ReservationDetailsView(), //Leads to the first reservation details page
     ),
   );
 }

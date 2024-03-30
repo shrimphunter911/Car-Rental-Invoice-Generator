@@ -83,11 +83,11 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                                           ],
                                           onChanged: (String? value) {
                                             setState(() {
+                                              // Letting the user select preferred car type and filtering out car selection option using method
                                               vehicleType = value;
                                               final cars = snapshot.data;
                                               filtered = null;
                                               filtered = service.filter(cars!, value!);
-                                              print(filtered);
                                             });
                                           },
                                         ),
@@ -122,8 +122,8 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                                           }).toList(),
                                           onChanged: (Car? value) {
                                             setState(() {
+                                              // Letting the user select preferred car
                                               selectedCar = value;
-                                              print(selectedCar);
                                             });
                                           },
                                         ),
@@ -152,6 +152,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      // Showing selected car details using a widget
                       child: CarModelView(selectedCar: selectedCar,),
                     ),
                   ],
@@ -173,9 +174,7 @@ class _VehicleInformationViewState extends State<VehicleInformationView> {
               child: TextButton(
                   onPressed: () async {
                     try {
-                      print(details);
-                      print(information);
-                      print(selectedCar);
+                      // Navigating to the next page
                       Navigator.push(
                         context,
                         MaterialPageRoute(

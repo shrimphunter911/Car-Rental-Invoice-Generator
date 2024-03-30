@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/invoice_services.dart';
 
+// Widget to show selected car image and details
+
 class CarModelView extends StatefulWidget {
   Car? selectedCar;
   CarModelView({super.key, required this.selectedCar});

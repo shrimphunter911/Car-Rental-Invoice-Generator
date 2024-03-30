@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 class InvoiceService{
 
+  // Method to get JSON from the api and putting them into a list of Car
   Future<List<Car>> fetch() async {
     final uri = Uri.parse("https://exam-server-7c41747804bf.herokuapp.com/carsList");
     final response = await http.get(uri);
@@ -15,11 +16,20 @@ class InvoiceService{
     }
   }
 
+  // Method to filter out cars from user preferred Car Type
   List<Car> filter(List<Car> cars, String type) {
     return cars.where((element) => element.type == type).toList();
   }
+
+  // Method to calculate Net Total to generate Invoice
+  dynamic total(Reservation details, Car selected, Charges additional) {
+    dynamic subtotal = (details.hours*selected.rates['hourly'])+(details.days!*selected.rates['daily'])+(details.weeks!*selected.rates['weekly']);
+    return ((subtotal*additional.tax)/100)+subtotal+additional.damage+additional.insurance;
+  }
 }
 
+
+// Post Class to construct object from JSON
 class Post{
   final String status;
   final List data;
@@ -40,9 +50,10 @@ class Post{
   String toString() => 'Status = $status, Message = $message';
 }
 
+// Additional Charges constructing Class
 class Charges{
-  int? damage;
-  int? insurance;
+  dynamic damage;
+  dynamic insurance;
   double? tax;
 
   Charges(bool damage, bool insurance, bool tax) {
@@ -67,6 +78,7 @@ class Charges{
   String toString() => 'Charges: Damage = $damage, Insurance = $insurance, Tax = $tax';
 }
 
+// Reservation details model class
 class Reservation{
   final String id;
   final DateTime pickupDateTime;
@@ -90,6 +102,7 @@ class Reservation{
   String toString() => 'Duration: $weeks Week $days Day $hours Hours';
 }
 
+// Car model class with necessary properties
 class Car{
   final String make;
   final String model;
@@ -112,6 +125,7 @@ class Car{
   String toString() => 'Car: Model = $model';
 }
 
+// Customer model class to construct customer information
 class Customer{
   final String firstName;
   final String lastName;

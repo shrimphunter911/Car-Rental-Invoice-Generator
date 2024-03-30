@@ -11,6 +11,7 @@ class CustomerInformationView extends StatefulWidget {
 }
 
 class _CustomerInformationViewState extends State<CustomerInformationView> {
+  // Text Editing Controllers to control TextFields
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -161,14 +162,14 @@ class _CustomerInformationViewState extends State<CustomerInformationView> {
               child: TextButton(
                   onPressed: () {
                     try {
+                      // Constructing customer information
                       final customer = Customer(
                         firstName: firstName.text,
                         lastName: lastName.text,
                         email: email.text,
                         phone: phone.text,
                       );
-                      print(customer);
-                      print(details);
+                      // Navigating to the next page
                       Navigator.push(
                         context,
                         MaterialPageRoute(

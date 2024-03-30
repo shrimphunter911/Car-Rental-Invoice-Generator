@@ -1,16 +1,24 @@
-# assignment
+# Car Rental: App to generate invoice for user fetching car details from API
 
-A new Flutter project.
+- Users can pick reservation details including pickup and drop off time
+- Users can provide user information
+- Users can choose preferred car type and select car fetched from API
+- Car details including image is shown to the user
+- Overall summary is shown to the user and invoice is generated calculating the rental duration and adding additional charges
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Clone the project using git or install the apk file in your device to get started
 
-A few resources to get you started if this is your first Flutter project:
+## User Interface of the App
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![](assets/Screenshot%202024-03-30%20231941.png)
+![](assets/Screenshot%202024-03-30%20232034.png)
+![](assets/Screenshot%202024-03-30%20232054.png)
+![](assets/Screenshot%202024-03-30%20232115.png)
+![](assets/Screenshot%202024-03-30%20232131.png)
+![](assets/Screenshot%202024-03-30%20232144.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Youtube Demonstration
+
+- https://youtu.be/X_aS1Q-1Onc
